@@ -85,19 +85,28 @@ code {
     .title  {
       text-align: left;
       margin: 10px;
+      margin-right: -10px;
       font-size: 64px;
       font-family: 'Staatliches';
       text-shadow: 2px 2px 2px gray;
       color: #151515;
       font-weight: bold;
+      background-color: white;
       
     }
     
-    img.picture {
+    .picture {
       background-color: limegreen;
+      height: 200px;
       /* width: 50px; */
     }
-    
+    .card {
+      width: 500px;
+      display: grid;
+      grid-template-columns:  1fr 3fr ;    
+      grid-template-rows:  1fr 1fr;
+
+    }
     @media (min-width: 400px) and (max-width: 800px) {
       body {
         width: 400px;
@@ -117,3 +126,19 @@ code {
         margin-left: 200px;
     }
   }
+  .container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 3px 3px; 
+    grid-template-areas: 
+      "pic pic body body"
+      "pic pic body body"; 
+    font-size: small;
+    justify-items: stretch;
+    align-items: end;
+    }
+  .pic { grid-area: pic; }
+  .body { grid-area: body;
+    font-size: 14px;
+ }

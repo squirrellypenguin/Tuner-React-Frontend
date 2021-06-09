@@ -7,14 +7,14 @@ console.log(props.tracks.data)
   ////////////////////
   // Styles
   ///////////////////
-  const div = {
-    textAlign: "center",
-    backgroundColor: "rgba(157,70,86,255)",
-    color: "white",
-    border: "3px solid rgba(0,0,0,0.5)",
-    width: "80%",
-    margin: "30px auto",
-  };
+  // const div = {
+  //   textAlign: "center",
+  //   backgroundColor: "rgba(157,70,86,255)",
+  //   color: "white",
+  //   border: "3px solid rgba(0,0,0,0.5)",
+  //   width: "80%",
+  //   margin: "30px auto",
+  // };
   const button = {
     backgroundColor: "rgba(157,70,86,255)",
     display: "block",
@@ -33,11 +33,16 @@ console.log(props.tracks.data)
         //   getMBID()
      
     return (
-        <div style={div} key={index}>
-            <div className="card">
-        <h1><img src={name.artist.picture_big}/> <i style={{paddingLeft:`0px`, color:`black`}}class="far fa-user-circle"></i> {name.artist.name}</h1>
-        <h4><i class="fas fa-music"></i>  {name.title}</h4>
-        <button style={{backgroundColor: `black`, border: `1px solid rgba(157,70,86,255)`}} onClick={() => props.handleClick(name.title, name.artist.name, name.duration, name.album.cover_big, name.artist.picture_big)}>Select</button>
+        <div  key={index}>
+        
+            <div className="container">
+            <div className="pic">
+        <img className="picture" src={name.artist.picture_big}/> </div>
+        <div className="body">
+        <h3><i style={{paddingLeft:`0px`, color:`black`}}class="far fa-user-circle"></i> {name.artist.name} </h3>
+        <h2 style={{marginRight: `-50px`}}><i class="fas fa-music"></i>  {name.title}</h2>
+        <button style={{ backgroundColor: "rgba(157,70,86,255)", border: `1px solid rgba(157,70,86,0)`}} onClick={() => props.handleClick(name.title, name.artist.name, name.duration, name.album.cover_big, name.artist.picture_big)}>Select</button>
+        </div>
         </div>
         </div>
     );
