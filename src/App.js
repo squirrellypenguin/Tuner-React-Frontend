@@ -15,13 +15,10 @@ function App(props) {
   // Style Objects
   ////////////////////
 
-  const h1 = {
-    textAlign: "center",
-    margin: "10px",
-  };
+
 
   const button = {
-    backgroundColor: "navy",
+    backgroundColor: "rgba(157,70,86,255)",
     display: "block",
     margin: "auto",
   };
@@ -33,6 +30,7 @@ function App(props) {
   const url = "https://backendtune.herokuapp.com/playlists/"
   const api = "https://ws.audioscrobbler.com/2.0/?method=track.search&track="
   const key = "&api_key=82f7419f5e079f0e81b1ffe36ca98b0e&format=json"
+ 
   // State to Hold The List of Songs
   const [songs, setSongs] = useState([]);
   const nullTodo = {
@@ -58,12 +56,13 @@ function App(props) {
   const getSearch = async (find) => {
     // console.log(search)
     let apiCall = api+find.name+key
-    const response = await fetch(apiCall);
-    console.log(response)
+    const richApi = `https://cors-anywhere.herokuapp.com/http://api.deezer.com/search?q=track:"${find.name}"`
+    const response = await fetch(richApi)
+    // console.log(response)
     const data = await response.json();
-    setTimeout(console.log("timer"), 5000)
-    setResults(data.results.trackmatches) 
-    console.log(data.results.trackmatches)
+    setTimeout(console.log(data), 5000)
+    setResults(data) 
+    // console.log(data.results.trackmatches)
     setTimeout(props.history.push("/search/results"), 4000)
   };
   const addSong = async (newSong) => {
@@ -118,10 +117,11 @@ const deleteTodo = async (todo) => {
   props.history.push("/");
 };
 
-const handleClick = async (name, artist) => {
-  let dbFormatter = {"artist": artist, "name": name}
+const handleClick = async (name, artist, time, coverart, singerart) => {
+  let dbFormatter = {"artist": artist, "name": name, "time": time, "coverart": coverart, "singerart": singerart}
   console.log("im the artist",   dbFormatter)
   addSong(dbFormatter)
+  alert('Track Added');
 };
 // useEffect to get list of todos when page loads
   useEffect(() => {
@@ -136,14 +136,18 @@ const handleClick = async (name, artist) => {
   /////////////////////
   return (
     <div>
-      <h1 style={h1}>My Todo List</h1>
-      <Link to="/new"><button style={button}>Add a song</button></Link>
-      <Link to="/search"><button style={button}>AFinddd a song</button></Link>
+   
+    <div className="header" ><Link to="/"><h1 className="title">TUNR.</h1></Link>
+ <Link to="/new"> <div className="headline"> for <span style={{color: `rgba(157,70,86,255)`, border: `0 solid rgba(157,70,86,255)`}} ><u>ADDING</u> </span> your playlist needs</div></Link>
+      <Search searchSong={getSearch}/>
+      </div>
+      {/* <Link to="/"><button style={button}>Home</button></Link> */}
+      {/* <Link to="/search"><button style={button}>AFinddd a song</button></Link>
       <Route
           
           path="/search"
           render={(routerProps) => <Search {...routerProps} searchSong={getSearch} />}
-        />
+        /> */}
       {/* <Search  searchSong={getSearch}/> */}
       <Switch>
         <Route
@@ -176,7 +180,7 @@ const handleClick = async (name, artist) => {
         {...routerProps}
         initialTodo={targetTodo}
         handleSubmit={updateTodo}
-        buttonLabel="update todo"
+        buttonLabel="Edit Track"
       />
     )}
   />
@@ -192,6 +196,7 @@ const handleClick = async (name, artist) => {
     )}
   />
       </Switch>
+      
     </div>
   );
 }

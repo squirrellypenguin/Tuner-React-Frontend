@@ -30,26 +30,29 @@ const Form = ({ initialTodo, handleSubmit, buttonLabel, history }) => {
 
   // Our Form, an input for the subject and details fields and a submit button
   return (
-    <form onSubmit={handleSubmisson}>
+    <form style={{textAlign: `center`, fontSize: `18px`}} onSubmit={handleSubmisson}>
       <input
+         placeholder="Title of Track"
         type="text"
         onChange={handleChange}
         value={formData.name}
         name="name"
       />
       <input
+         placeholder="Name of Artist"
         type="text"
         onChange={handleChange}
         value={formData.artist}
         name="artist"
       />
            <input
+           placeholder="Time of the Track"
         type="text"
         onChange={handleChange}
         value={formData.time}
         name="time"
       />
-      <input type="submit" value={buttonLabel} />
+      <input type="submit"value={buttonLabel} style={{ align: `center`, backgroundColor: `black`, border: `1px solid rgba(157,70,86,255)`}}/>
     </form>
   );
 };
