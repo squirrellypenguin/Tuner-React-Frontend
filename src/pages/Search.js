@@ -12,7 +12,14 @@ const Search = ({ searchSong }) => {
   //////////////////////////
   // Functions
   //////////////////////////
-
+  const button = {
+    backgroundColor: "white",
+    color: "rgba(157,70,86,255)",
+   border: "0px solid black",
+   paddingTop: "10px",
+   textAlign: "center",
+  
+  };
   // Standard React Form HandleChange Function
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -25,20 +32,26 @@ const Search = ({ searchSong }) => {
     //pass formData to handleSubmit prop function
     searchSong(formData);
     //push user back to main page
-    // history.push("/");
+    // props.history.push("/search/results");
   };
 
   // Our Form, an input for the subject and details fields and a submit button
   return (
-    <form onSubmit={handleSubmisson}>
-      <input
+      <div >
+    <form className="form-inline" onSubmit={handleSubmisson}>
+
+      <input style={{fontSize: `16px`, paddingBottom: `20px`, paddingTop: `20px`, backgroundColor: `white`}} className="form" 
         type="text"
+        placeholder="Song name . . . "
+
         onChange={handleChange}
         value={formData.name}
         name="name"
       />
-      <input type="submit" value="Search" />
+ 
+      <button  className="real" style={button} type="submit" value="Search">Search</button>
     </form>
+    </div>
   );
 };
 

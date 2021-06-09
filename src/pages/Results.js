@@ -3,23 +3,42 @@ import { Link } from "react-router-dom";
 
 // destructuring the props needed to get our post, including router prop match
 const Results = (props) => {
-console.log(props.tracks.track)
-
+console.log(props.tracks.data)
   ////////////////////
   // Styles
   ///////////////////
   const div = {
     textAlign: "center",
-    border: "3px solid green",
+    backgroundColor: "rgba(157,70,86,255)",
+    color: "white",
+    border: "3px solid rgba(0,0,0,0.5)",
     width: "80%",
     margin: "30px auto",
   };
-  const names = props.tracks.track.map((name, index) => {
+  const button = {
+    backgroundColor: "rgba(157,70,86,255)",
+    display: "block",
+   marginTop: "10px",
+  
+  };
+  const names = props.tracks.data.map((name, index) => {
+
+        //   const getMBID = async () => {
+            //   let getter = mburl+name.mbid
+            //   console.log(getter)
+            // const response = await fetch(getter);
+            // const data = await response.json();
+            // setSongs(data);
+     
+        //   getMBID()
+     
     return (
         <div style={div} key={index}>
-        <h1>first={name.artist}</h1>
-        <h2>last={name.name}</h2>
-        <button onClick={() => props.handleClick(name.name, name.artist)}>Select</button>
+            <div className="card">
+        <h1><img src={name.artist.picture_big}/> <i style={{paddingLeft:`0px`, color:`black`}}class="far fa-user-circle"></i> {name.artist.name}</h1>
+        <h4><i class="fas fa-music"></i>  {name.title}</h4>
+        <button style={{backgroundColor: `black`, border: `1px solid rgba(157,70,86,255)`}} onClick={() => props.handleClick(name.title, name.artist.name, name.duration, name.album.cover_big, name.artist.picture_big)}>Select</button>
+        </div>
         </div>
     );
   });
@@ -28,9 +47,9 @@ console.log(props.tracks.track)
 
 
   return (
-    <div style={div}>
-
-    {names}
+    <div >
+{names}
+    {/* {names} */}
       <Link to="/">
         <button>Go Back</button>
       </Link>
