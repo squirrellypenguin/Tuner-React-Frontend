@@ -34,7 +34,7 @@ const Post = ({ post }) => {
         <div className="div1" ><h1 className=""></h1></div><div className="div5"><h2 style={{ paddingTop: `10px`, paddingLeft:`10px`,  fontWeight: `bold`,    textShadow: `.5px .5px .5px rgba(255,255,255, .5)`,
 color:`black`}}><i class="fas fa-music"></i> {post.name}</h2><h3 ><i style={{paddingLeft:`10px`, color:`black`}}class="far fa-user-circle"></i> &nbsp;   {post.artist}</h3><h4 style={{  fontWeight: `bold`,    textShadow: `.5px .5px .5px rgba(255,255,255, .5)`,
 color:`black`, paddingLeft: `10px`}} className="padding"><i class="fas fa-clock"></i> {format(post.time)} </h4></div> 
-      <div className="div6"><img style={{marginRight: `0px`, marginTop: `50px`, height:`100px`}} className="picture" src={post.singerart} /></div>
+      <div className="div6"><img style={{ marginTop: `50px`, height:`100px`}} className="picture" src={post.singerart} /></div>
 </div>
       </Link>
 <br / >
