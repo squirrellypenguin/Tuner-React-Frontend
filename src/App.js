@@ -64,7 +64,7 @@ function App(props) {
     setTimeout(console.log("timer"), 5000)
     setResults(data.results.trackmatches) 
     console.log(data.results.trackmatches)
-    setTimeout(props.history.push("/search"), 4000)
+    setTimeout(props.history.push("/search/results"), 4000)
   };
   const addSong = async (newSong) => {
     console.log(newSong)
@@ -137,20 +137,20 @@ const handleClick = async (name, artist) => {
   return (
     <div>
       <h1 style={h1}>My Todo List</h1>
-      <Search  searchSong={getSearch}/>
       <Link to="/new"><button style={button}>Add a song</button></Link>
+      <Route
+          exact
+          path="/search"
+          render={(routerProps) => <Search {...routerProps} searchSong={getSearch} />}
+        />
+      {/* <Search  searchSong={getSearch}/> */}
       <Switch>
         <Route
           exact
           path="/"
           render={(routerProps) => <AllPosts {...routerProps} posts={songs} />}
         />
-        {/* <Route
-          path="/post/:id"
-          render={(routerProps) => (
-            <SinglePost {...routerProps} posts={songs} />
-          )}
-        /> */}
+   
        <Route
   path="/new"
   render={(routerProps) => (
@@ -181,7 +181,7 @@ const handleClick = async (name, artist) => {
   />
 
 <Route
-    path="/search"
+    path="/search/results"
     render={(routerProps) => (
       <Results
         {...routerProps}
