@@ -84,9 +84,9 @@ function App(props) {
   
   const getSearch = (find) => {
     let apiCall = api+find.name+key
-   console.log(apiCall)
-   setSearch(apiCall)
-   console.log(search)
+  //  console.log(apiCall)
+  //  setSearch(apiCall)
+  //  console.log(search)
   getResults(apiCall)
   };
   
