@@ -140,6 +140,7 @@ const handleClick = async (name, artist, time, coverart, singerart) => {
     <div className="header" ><Link to="/"><h1 className="title">TUNR.</h1></Link>
  <Link to="/new"> <div className="headline"> for <span style={{color: `rgba(157,70,86,255)`, border: `0 solid rgba(157,70,86,255)`}} ><u>ADDING</u> </span> your playlist needs</div></Link>
       <Search searchSong={getSearch}/>
+   
       </div>
       {/* <Link to="/"><button style={button}>Home</button></Link> */}
       {/* <Link to="/search"><button style={button}>AFinddd a song</button></Link>

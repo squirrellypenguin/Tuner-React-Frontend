@@ -51,6 +51,7 @@ const Search = ({ searchSong }) => {
  
       <button  className="real" style={button} type="submit" value="Search">Search</button>
     </form>
+    <div style={{borderTop: "4px solid rgba(157,70,86,255) ", marginLeft: -30, marginRight: -30 }}></div>
     </div>
   );
 };
