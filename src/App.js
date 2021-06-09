@@ -56,6 +56,7 @@ function App(props) {
   };
 
   const getResults = async (foo) => {
+    console.log(foo)
     const response = await fetch(foo);
     const data = await response.json();
     setResults(data.results.trackmatches)
