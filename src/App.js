@@ -59,9 +59,9 @@ function App(props) {
     console.log(foo)
     const response = await fetch(foo);
     const data = await response.json();
-    setResults(data.results.trackmatches)
+    setTimeout(setResults(data.results.trackmatches), 5000)
     console.log(data.results.trackmatches)
-    props.history.push("/search");
+    setTimeout(props.history.push("/search"), 4000)
   };
   const addSong = async (newSong) => {
     console.log(newSong)
