@@ -138,6 +138,7 @@ const handleClick = async (name, artist) => {
     <div>
       <h1 style={h1}>My Todo List</h1>
       <Link to="/new"><button style={button}>Add a song</button></Link>
+      <Link to="/search"><button style={button}>AFinddd a song</button></Link>
       <Route
           
           path="/search"
