@@ -2,7 +2,8 @@
 import AllPosts from "./pages/AllPosts";
 import SinglePost from "./pages/SinglePost";
 import Form from "./pages/Form";
-
+import Search from "./pages/Search"
+import  Results from "./pages/Results"
 // Import React and hooks
 import React, { useState, useEffect } from "react";
 
@@ -30,6 +31,8 @@ function App(props) {
 
   // Our Api Url
   const url = "https://backendtune.herokuapp.com/playlists/"
+  const api = "http://ws.audioscrobbler.com/2.0/?method=track.search&track="
+  const key = "&api_key=82f7419f5e079f0e81b1ffe36ca98b0e&format=json"
   // State to Hold The List of Songs
   const [songs, setSongs] = useState([]);
   const nullTodo = {
@@ -38,8 +41,10 @@ function App(props) {
     time: ""
   };
 
-  const [targetTodo, setTargetTodo] = useState(nullTodo);
+  const [search, setSearch] = useState([])
 
+  const [targetTodo, setTargetTodo] = useState(nullTodo);
+  const [results, setResults] = useState([])
   //////////////
   // Functions
   //////////////
@@ -47,7 +52,15 @@ function App(props) {
     const response = await fetch(url);
     const data = await response.json();
     setSongs(data);
-    console.log(data)
+    // console.log(data)
+  };
+
+  const getResults = async () => {
+    const response = await fetch(search);
+    const data = await response.json();
+    setResults(data.results.trackmatches)
+    console.log(data.results.trackmatches)
+    props.history.push("/search");
   };
   const addSong = async (newSong) => {
     console.log(newSong)
@@ -66,6 +79,13 @@ function App(props) {
   const getTargetTodo = (todo) => {
     setTargetTodo(todo);
     props.history.push("/edit");
+  };
+  
+  const getSearch = (find) => {
+    let apiCall = api+find.name+key
+   console.log(apiCall)
+   setSearch(apiCall)
+    getResults(apiCall)
   };
   
   // Function to edit todo on form submission
@@ -93,7 +113,11 @@ const deleteTodo = async (todo) => {
   props.history.push("/");
 };
 
-
+const handleClick = async (name, artist) => {
+  let dbFormatter = {"artist": artist, "name": name}
+  console.log("im the artist",   dbFormatter)
+  addSong(dbFormatter)
+};
 // useEffect to get list of todos when page loads
   useEffect(() => {
   getSongs();
@@ -108,6 +132,7 @@ const deleteTodo = async (todo) => {
   return (
     <div>
       <h1 style={h1}>My Todo List</h1>
+      <Search  searchSong={getSearch}/>
       <Link to="/new"><button style={button}>Add a song</button></Link>
       <Switch>
         <Route
@@ -146,6 +171,17 @@ const deleteTodo = async (todo) => {
         initialTodo={targetTodo}
         handleSubmit={updateTodo}
         buttonLabel="update todo"
+      />
+    )}
+  />
+
+<Route
+    path="/search"
+    render={(routerProps) => (
+      <Results
+        {...routerProps}
+        tracks={results}
+        handleClick={handleClick} 
       />
     )}
   />
