@@ -58,6 +58,7 @@ function App(props) {
   const getResults = async (foo) => {
     console.log(foo)
     const response = await fetch(foo);
+    console.log(response)
     const data = await response.json();
     setTimeout(setResults(data.results.trackmatches), 5000)
     console.log(data.results.trackmatches)
