@@ -55,9 +55,10 @@ function App(props) {
     // console.log(data)
   };
 
-  const getResults = async (search) => {
-    console.log(search)
-    const response = await fetch(search);
+  const getSearch = async (find) => {
+    // console.log(search)
+    let apiCall = api+find.name+key
+    const response = await fetch(apiCall);
     console.log(response)
     const data = await response.json();
     setTimeout(console.log("timer"), 5000)
@@ -84,13 +85,13 @@ function App(props) {
     props.history.push("/edit");
   };
   
-  const getSearch = (find) => {
-    let apiCall = api+find.name+key
-  //  console.log(apiCall)
-  //  setSearch(apiCall)
-  //  console.log(search)
-  getResults(apiCall)
-  };
+  // const getSearch = (find) => {
+  //   let apiCall = api+find.name+key
+  // //  console.log(apiCall)
+  // //  setSearch(apiCall)
+  // //  console.log(search)
+  // getResults(apiCall)
+  // };
   
   // Function to edit todo on form submission
   const updateTodo = async (todo) => {
