@@ -139,7 +139,7 @@ const handleClick = async (name, artist) => {
       <h1 style={h1}>My Todo List</h1>
       <Link to="/new"><button style={button}>Add a song</button></Link>
       <Route
-          exact
+          
           path="/search"
           render={(routerProps) => <Search {...routerProps} searchSong={getSearch} />}
         />
