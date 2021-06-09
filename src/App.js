@@ -55,8 +55,8 @@ function App(props) {
     // console.log(data)
   };
 
-  const getResults = async () => {
-    const response = await fetch(search);
+  const getResults = async (foo) => {
+    const response = await fetch(foo);
     const data = await response.json();
     setResults(data.results.trackmatches)
     console.log(data.results.trackmatches)
@@ -85,7 +85,7 @@ function App(props) {
     let apiCall = api+find.name+key
    console.log(apiCall)
    setSearch(apiCall)
-    getResults(apiCall)
+  getResults(apiCall)
   };
   
   // Function to edit todo on form submission
