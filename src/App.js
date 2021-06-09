@@ -59,7 +59,8 @@ function App(props) {
     const response = await fetch(search);
     const data = await response.json();
     setResults(data.results.trackmatches)
-    // console.log(data.results.trackmatches)
+    console.log(data.results.trackmatches)
+    props.history.push("/search");
   };
   const addSong = async (newSong) => {
     console.log(newSong)
@@ -85,7 +86,6 @@ function App(props) {
    console.log(apiCall)
    setSearch(apiCall)
     getResults(apiCall)
-    props.history.push("/search");
   };
   
   // Function to edit todo on form submission
@@ -113,7 +113,11 @@ const deleteTodo = async (todo) => {
   props.history.push("/");
 };
 
-
+const handleClick = async (name, artist) => {
+  let dbFormatter = {"artist": artist, "name": name}
+  console.log("im the artist",   dbFormatter)
+  addSong(dbFormatter)
+};
 // useEffect to get list of todos when page loads
   useEffect(() => {
   getSongs();
@@ -177,7 +181,7 @@ const deleteTodo = async (todo) => {
       <Results
         {...routerProps}
         tracks={results}
-     
+        handleClick={handleClick} 
       />
     )}
   />
