@@ -31,7 +31,7 @@ function App(props) {
 
   // Our Api Url
   const url = "https://backendtune.herokuapp.com/playlists/"
-  const api = "http://ws.audioscrobbler.com/2.0/?method=track.search&track="
+  const api = "https://ws.audioscrobbler.com/2.0/?method=track.search&track="
   const key = "&api_key=82f7419f5e079f0e81b1ffe36ca98b0e&format=json"
   // State to Hold The List of Songs
   const [songs, setSongs] = useState([]);

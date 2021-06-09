@@ -25,7 +25,7 @@ const Search = ({ searchSong }) => {
     //pass formData to handleSubmit prop function
     searchSong(formData);
     //push user back to main page
-    // history.push("/");
+    // props.history.push("/search/results");
   };
 
   // Our Form, an input for the subject and details fields and a submit button
