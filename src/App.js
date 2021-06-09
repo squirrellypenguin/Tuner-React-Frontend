@@ -85,6 +85,7 @@ function App(props) {
     let apiCall = api+find.name+key
    console.log(apiCall)
    setSearch(apiCall)
+   console.log(search)
   getResults(apiCall)
   };
   
