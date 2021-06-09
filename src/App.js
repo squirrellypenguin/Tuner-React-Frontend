@@ -55,12 +55,13 @@ function App(props) {
     // console.log(data)
   };
 
-  const getResults = async (foo) => {
-    console.log(foo)
-    const response = await fetch(foo);
+  const getResults = async (search) => {
+    console.log(search)
+    const response = await fetch(search);
     console.log(response)
     const data = await response.json();
-    setTimeout(setResults(data.results.trackmatches), 5000)
+    setTimeout(console.log("timer"), 5000)
+    setResults(data.results.trackmatches) 
     console.log(data.results.trackmatches)
     setTimeout(props.history.push("/search"), 4000)
   };
